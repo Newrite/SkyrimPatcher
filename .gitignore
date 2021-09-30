@@ -361,3 +361,11 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+#Paket dependency manager
+.paket/
+paket-files/
+
+#FAKE
+/build
+/build.fsx.lock
