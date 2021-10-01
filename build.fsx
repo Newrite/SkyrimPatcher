@@ -10,7 +10,7 @@ open Fake.IO
 open Fake.DotNet
 
 let buildDir = "./build/"
-let skyrimDir = @"G:\MO2Dev\overwrite"
+let skyrimDir = @"E:\Mod Organizer 2\overwrite"
 
 Target.create "Clean" (fun _ ->
   Shell.cleanDir buildDir
