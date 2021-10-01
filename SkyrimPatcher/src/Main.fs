@@ -20,11 +20,17 @@ let main _ =
     |> Seq.filter (isNull >> not)
     |> Seq.filter (fun leveledNpc -> not <| isNull leveledNpc.Entries)
 
+  let npcsRedord =
+    Records.Npc.WinningOverrides false (Seq.rev loadOrder)
+    |>Seq.filter (isNull >> not)
+
   Patcher.Armor.processPatchArmorsAndShieldsWithTemplate armorsRecord cache newMod
   Patcher.Armor.processPatchArmorsWithoutTemplateNoShield armorsRecord newMod
   Patcher.Armor.processPatchShieldsWithoutTemplate armorsRecord cache newMod
 
   Patcher.LeveledNpc.processPatchLeveledNpc leveledNpcsRecord newMod
+
+  Patcher.Npc.processPatchNpc npcsRedord newMod
 
   newMod.WriteToBinaryParallel(modName)
 

@@ -31,7 +31,7 @@ module LeveledNpc =
       leveledNpc.Entries
       |> Seq.iter ( fun npc ->
         let newLevel = calcLevel npc.Data.Level
-        printfn "Change level from %d to %d..." npc.Data.Level newLevel
+        printfn "LeveledNPC: Change level from %d to %d..." npc.Data.Level newLevel
         npc.Data.Level <- newLevel
       )
       leveledNpc 
@@ -39,7 +39,7 @@ module LeveledNpc =
 
   let private addLeveledNpcRecordToMod (skyrimMod: #SkyrimMod) (leveledNpcCollection: LeveledNpc seq) =
     
-    printfn "Begin write LeveledNpc or shields to mod...\n"
+    printfn "Begin write LeveledNpc to mod...\n"
 
     leveledNpcCollection
     |>Seq.iter ( fun leveledNpc ->

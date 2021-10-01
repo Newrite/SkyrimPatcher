@@ -4,6 +4,30 @@
 
 namespace Patcher
     
+    module Npc =
+        
+        val private templateScriptEntryNpc:
+          staticAmount: float32 -> multAmount: float32
+            -> Mutagen.Bethesda.Skyrim.ScriptEntry
+        
+        val private filterWithoutScriptTemplateFlag:
+          npcCollection: seq<'a> -> seq<'a>
+            when 'a :> Mutagen.Bethesda.Skyrim.INpcGetter
+        
+        val private attachXPScript:
+          npcCollection: seq<#Mutagen.Bethesda.Skyrim.INpcGetter>
+            -> seq<Mutagen.Bethesda.Skyrim.Npc>
+        
+        val private addNpcRecordToMod:
+          skyrimMod: #Mutagen.Bethesda.Skyrim.SkyrimMod
+          -> npcCollection: seq<Mutagen.Bethesda.Skyrim.Npc> -> unit
+        
+        val processPatchNpc:
+          npcCollection: seq<#Mutagen.Bethesda.Skyrim.INpcGetter>
+          -> skyrimMod: #Mutagen.Bethesda.Skyrim.SkyrimMod -> unit
+
+namespace Patcher
+    
     module LeveledNpc =
         
         val private deepCopyLeveledNpcs:
