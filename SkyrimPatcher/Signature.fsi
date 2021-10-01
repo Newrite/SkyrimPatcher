@@ -4,6 +4,27 @@
 
 namespace Patcher
     
+    module LeveledNpc =
+        
+        val private deepCopyLeveledNpcs:
+          leveledNpcCollection: seq<#Mutagen.Bethesda.Skyrim.ILeveledNpcGetter>
+            -> seq<Mutagen.Bethesda.Skyrim.LeveledNpc>
+        
+        val private changeLevelEntries:
+          leveledNpcCollection: seq<'a> -> seq<'a>
+            when 'a :> Mutagen.Bethesda.Skyrim.LeveledNpc
+        
+        val private addLeveledNpcRecordToMod:
+          skyrimMod: #Mutagen.Bethesda.Skyrim.SkyrimMod
+          -> leveledNpcCollection: seq<Mutagen.Bethesda.Skyrim.LeveledNpc>
+            -> unit
+        
+        val processPatchLeveledNpc:
+          leveledNpcCollection: seq<#Mutagen.Bethesda.Skyrim.ILeveledNpcGetter>
+          -> skyrimMod: #Mutagen.Bethesda.Skyrim.SkyrimMod -> unit
+
+namespace Patcher
+    
     module Armor =
         
         val private (|Heavy|Light|Clothing|EnumError|) :

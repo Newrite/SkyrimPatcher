@@ -181,7 +181,8 @@ module Armor =
     (cache: #ILinkCache)
     (skyrimMod: #SkyrimMod) =
 
-      Templated.armorsWithTemplate armorCollect
+      armorCollect
+      |> Templated.armorsWithTemplate
       |> Templated.templatesWithChangedValues cache
       |> addArmorsRecordToMod skyrimMod
 
@@ -190,7 +191,8 @@ module Armor =
     (armorCollect: #IArmorGetter seq)
     (skyrimMod: #SkyrimMod) =
 
-      NoShield.armorsWithoutTemplateNoShield armorCollect
+      armorCollect
+      |> NoShield.armorsWithoutTemplateNoShield
       |> NoShield.armorsWithChangedDamageResist
       |> addArmorsRecordToMod skyrimMod
 
@@ -199,7 +201,8 @@ module Armor =
     (cache: #ILinkCache)
     (skyrimMod: #SkyrimMod) =
 
-      Shield.shieldWithoutTemplate armorCollect
+      armorCollect
+      |> Shield.shieldWithoutTemplate
       |> Shield.shieldWithChangedDamageResist
       |> Shield.addShieldKeywordToShields cache
       |> addArmorsRecordToMod skyrimMod
