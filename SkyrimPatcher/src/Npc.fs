@@ -8,9 +8,9 @@ open Mutagen.Func
 module Npc =
 
   let private templateScriptEntryNpc staticAmount multAmount =
-    Scripts.ScriptEntry.New "XP" [
-      Scripts.ScriptProperty.Float "XPStaticAmount" staticAmount
-      Scripts.ScriptProperty.Float "XPMultAmount" multAmount
+    Scripts.ScriptEntry.create "XP" [
+      Scripts.ScriptProperty.float "XPStaticAmount" staticAmount
+      Scripts.ScriptProperty.float "XPMultAmount" multAmount
     ]
 
   let private filterWithoutScriptTemplateFlag (npcCollection: #INpcGetter seq) =
@@ -30,7 +30,7 @@ module Npc =
       let copy = npc.DeepCopy()
       if isNull copy.VirtualMachineAdapter then
         let newVMA =
-          Scripts.VirtualMachineAdapter.New [ templateScriptEntryNpc 10000.f 2.f ]
+          Scripts.VirtualMachineAdapter.create [ templateScriptEntryNpc 10000.f 2.f ]
         copy.VirtualMachineAdapter <- newVMA
         printfn "NPC: %A null VMA, create new and add script" copy.EditorID
         copy
