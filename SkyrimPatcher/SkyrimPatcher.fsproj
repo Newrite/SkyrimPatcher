@@ -22,6 +22,7 @@
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="src\Npc.fs" />
     <Compile Include="src\LeveledNpc.fs" />
     <Compile Include="src\Armor.fs" />
     <Compile Include="src\Main.fs" />
