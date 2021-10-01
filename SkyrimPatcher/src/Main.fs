@@ -8,9 +8,7 @@ let main _ =
   let cache = Cache.ToImmutableLinkCache loadOrder
   let armorsRecord =
     Records.Armor.WinningOverrides false (Seq.rev loadOrder)
-    |>Seq.filter ( fun armor ->
-      not <| isNull armor
-    )
+    |>Seq.filter (isNull >> not)
 
   let modName = "ArmorTest.esp"
 
